@@ -1,6 +1,6 @@
-entity test_tempmux is
+entity test_thermo is
 
-end test_tempmux;
+end test_thermo;
 
 architecture BEHAV of test_tempmux is 
 
@@ -74,4 +74,5 @@ component therm
  end BEHAV;
  
                        
+
 
