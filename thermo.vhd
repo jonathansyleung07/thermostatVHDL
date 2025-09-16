@@ -26,8 +26,9 @@ architecture BEHAV of thermo is
 begin
 
 
-process (Current_Temp, Desired_Temp, Display_Select, COOL, HEAT)
+process (Current_Temp, Desired_Temp, Display_Select)
 
+--Logic for displaying current temp or desired temp
 begin
 
     if Display_Select = '1' then
@@ -38,8 +39,11 @@ begin
 
         Temp_Display <= Desired_Temp;
 
-    end if;
-    
+    end if;  
+end process;
+
+--Logic for turning on the AC and Furnace
+process (COOL, HEAT)
     if COOL = '1' and Current_Temp > Desired_Temp  then 
             A_C_ON <= '1';
        else 
@@ -56,3 +60,4 @@ end process;
 
 
 end BEHAV;
+
