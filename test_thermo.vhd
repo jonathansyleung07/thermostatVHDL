@@ -2,7 +2,7 @@ entity test_thermo is
 
 end test_thermo;
 
-architecture BEHAV of test_tempmux is 
+architecture BEHAV of test_thermo is 
 
 component therm 
     port (Current_Temp   : in bit_vector(6 downto 0);
@@ -74,5 +74,6 @@ component therm
  end BEHAV;
  
                        
+
 
 
