@@ -48,16 +48,16 @@ component therm
  wait for 10ns; 
  Display_Select <= '1'; -- Should diplay current temp
  wait for 10ns;
- --Testing if too hot (31) and want to lower temp (15) using AC
+ --Testing if the AC needs to be turned on
  COOL <= '1'; --The logic should turn on A_C_ON (set it to high) because Current_Temp>Desired Temp
  wait for 10ns;
- --Testing if furnace will not activate because current temp > desired temp
- COOL <= '0'; --turning off AC
+ COOL <= '0'; --turning off AC switch
  wait for 10ns;
+--Testing furnace logic (if Current_Temp>Desired Temp furnace should not turn on)
  HEAT <= '1';
  wait for 10ns;
- HEAT <= '0'; --turning off furnace
- --Switching current temp and desired temp to test if Furnace works
+ HEAT <= '0'; --turning off heat switch
+ --Switching current temp and desired temp for more testing
  Current_Temp <= "0000001"; --1 decimal
  Desired_Temp <= "0001111"; --15 binary
  wait for 10ns;
@@ -65,7 +65,7 @@ component therm
  wait for 10ns;
  HEAT <= '0';
  wait for 10ns;
- --Testing if AC will not activate because current temp < desired temp
+ --AC should not turn on because current temp < desired temp
  COOL <= '1';
  wait;
  
@@ -74,6 +74,7 @@ component therm
  end TEST;
  
                        
+
 
 
 
