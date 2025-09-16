@@ -1,4 +1,4 @@
-entity therm is
+entity thermo is
 
 port ( Current_Temp   : in bit_vector(6 downto 0);
 
@@ -18,10 +18,10 @@ port ( Current_Temp   : in bit_vector(6 downto 0);
 
        
 
-end therm;
+end thermo;
 
 
-architecture BEHAV of therm is
+architecture BEHAV of thermo is
 
 begin
 
@@ -53,5 +53,6 @@ begin
     end if;
                       
 end process;
+
 
 end BEHAV;
