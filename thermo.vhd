@@ -43,21 +43,28 @@ begin
 end process;
 
 --Logic for turning on the AC and Furnace
-process (COOL, HEAT)
-    if COOL = '1' and Current_Temp > Desired_Temp  then 
+process (COOL, HEAT, Current_Temp, Desired_Temp)
+begin
+    -- Interlock: if both switches are on, turn everything off
+    if HEAT = '1' and COOL = '1' then
+       A_C_ON     <= '0';
+       FURNACE_ON <= '0';
+    else
+       -- Normal AC logic
+       if COOL = '1' and Current_Temp > Desired_Temp  then 
             A_C_ON <= '1';
        else 
             A_C_ON <= '0';
-    end if;
-    
-    if HEAT = '1' and Current_Temp < Desired_Temp then 
+       end if;
+
+       -- Normal Furnace logic
+       if HEAT = '1' and Current_Temp < Desired_Temp then 
             FURNACE_ON <= '1';
        else 
             FURNACE_ON <= '0';
+       end if; 
     end if;
-                      
 end process;
-
-
+           
 end BEHAV;
 
